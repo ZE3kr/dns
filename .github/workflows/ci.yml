@@ -1,0 +1,16 @@
+name: remote ssh command
+on: [push]
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using ssh key
+      uses: appleboy/ssh-action@master
+      with:
+        host: "bj1-aliyun.tloxygen.com,hk1-tencent.tloxygen.com,us1-buyvm.tloxygen.com,us2-buyvm.tloxygen.com,eu1-buyvm.tloxygen.com"
+        sync: true
+        username: root
+        key: ${{ secrets.KEY }}
+        script: curl https://raw.githubusercontent.com/ZE3kr/dns/main/zones.yml -o /etc/powerdns/zones.yaml && pdns_control reload

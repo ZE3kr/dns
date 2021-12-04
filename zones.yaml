@@ -1,0 +1,29 @@
+domains:
+- domain: guozeyu.com
+  ttl: 300
+  records:
+    na.geo.guozeyu.com:
+      - soa: &soa ns-main.tlo.xyz hostmaster.tlo.xyz 1 7200 3600 1209600 3600
+      - ns: &ns1
+          content: ns-main.tlo.xyz
+          ttl: 172800
+      - ns: &ns2
+          content: ns-secondary.tlo.xyz
+          ttl: 172800
+      - mx: &mx 10 mx.example.com
+      - a: 104.21.20.93
+      - a: 172.67.192.10
+      - aaaa: 2606:4700:3033::6815:145d
+      - aaaa: 2606:4700:3037::ac43:c00a
+    cn.geo.guozeyu.com:
+      - soa: *soa
+      - ns: *ns1
+      - ns: *ns2
+      - mx: *mx
+      - a: 47.93.254.38
+      - aaaa: 2408:400a:1c:6502:3461:ceda:90c1:31c4
+    www.guozeyu.com:
+      - cname: guozeyu.com
+
+  services:
+    guozeyu.com: [ '%cc.geo.guozeyu.com', 'na.geo.guozeyu.com']
