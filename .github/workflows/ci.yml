@@ -13,4 +13,4 @@ jobs:
         sync: true
         username: root
         key: ${{ secrets.KEY }}
-        script: curl https://raw.githubusercontent.com/ZE3kr/dns/main/zones.yml -o /etc/powerdns/zones.yaml && pdns_control reload
+        script: curl https://raw.githubusercontent.com/ZE3kr/dns/main/zones.yaml -o /etc/powerdns/zones.yaml && pdns_control reload
